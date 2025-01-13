@@ -1,4 +1,4 @@
-package character.abstraction;
+package character.person;
 
 import character.Character;
 

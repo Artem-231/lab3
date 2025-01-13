@@ -1,7 +1,7 @@
 package location.island.coast;
 
 import location.enumeration.LocationEnum;
-import location.island.abstraction.Coast;
+import location.islandAbstract.Coast;
 
 public class Beach extends Coast {
     public Beach(String placeName, LocationEnum world, String legendaryLevel, double length) {

@@ -1,6 +1,6 @@
 package character.aborigen;
 
-import character.abstraction.Aborigen;
+import character.person.Aborigen;
 
 public class Atatat extends Aborigen {
     public Atatat(String tribeName) {

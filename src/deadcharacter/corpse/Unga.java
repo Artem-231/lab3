@@ -1,6 +1,6 @@
 package deadcharacter.corpse;
 
-import deadcharacter.abstraction.Corpse;
+import deadcharacter.body.Corpse;
 
 public class Unga extends Corpse {
     public Unga(String identity, String causeOfDeath) {

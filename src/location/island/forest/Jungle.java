@@ -1,7 +1,7 @@
 package location.island.forest;
 
 import location.enumeration.LocationEnum;
-import location.island.abstraction.Forest;
+import location.islandAbstract.Forest;
 
 public class Jungle extends Forest {
     public Jungle(String placeName, LocationEnum world, String legendaryLevel, boolean dense, int square) {

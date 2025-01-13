@@ -1,6 +1,6 @@
 package character.hero;
 
-import character.abstraction.Hero;
+import character.person.Hero;
 
 public class MainHero extends Hero {
     public MainHero(String name, int level) {

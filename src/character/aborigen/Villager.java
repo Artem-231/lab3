@@ -1,4 +1,4 @@
-package character.record;
+package character.aborigen;
 
 public record Villager(String name, int age, String role) {
 

@@ -1,6 +1,5 @@
-package location.island.abstraction;
+package location.islandAbstract;
 
-import location.abstaction.Island;
 import location.enumeration.LocationEnum;
 
 public abstract class Coast extends Island {

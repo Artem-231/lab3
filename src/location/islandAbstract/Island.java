@@ -1,7 +1,11 @@
-package location.abstaction;
+package location.islandAbstract;
 
 import location.Location;
 import location.enumeration.LocationEnum;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 public abstract class Island implements Location {
     private String placeName;
@@ -12,6 +16,23 @@ public abstract class Island implements Location {
         this.placeName = placeName;
         this.world = world;
         this.legendaryLevel = legendaryLevel;
+    }
+
+    protected ArrayList<String> Weather  = new ArrayList<>(Arrays.asList("Sunny",
+            "Cloudy",
+            "Rainy",
+            "Windy",
+            "Snowy"
+    ));
+
+    protected int getRandomWeather(){
+        Random random = new Random();
+        int index = random.nextInt(6);
+        return index-1;
+    }
+
+    public String getWeather(){
+        return Weather.get(getRandomWeather());
     }
 
     public String getPlaceName() {

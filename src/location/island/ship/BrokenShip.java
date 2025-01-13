@@ -1,7 +1,7 @@
 package location.island.ship;
 
 import location.enumeration.LocationEnum;
-import location.island.abstraction.Ship;
+import location.islandAbstract.Ship;
 
 public class BrokenShip extends Ship {
     public BrokenShip(String placeName, LocationEnum world, String legendaryLevel, double speed, int capacity) {

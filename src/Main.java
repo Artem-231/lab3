@@ -1,8 +1,9 @@
 import character.aborigen.Atatat;
 import character.hero.MainHero;
-import character.record.Villager;
-import deadcharacter.abstraction.Corpse;
+import character.aborigen.Villager;
+import deadcharacter.body.Corpse;
 
+import exceptions.CorpseDecayedException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -42,14 +43,38 @@ public class Main {
         Corpse oldCorpse = new Corpse("Неизвестный Моряк", "Утонул во время кораблекрушения") {
             @Override
             public void decay() {
-                System.out.println(getIdentity() + " медленно разлагается.");
+                System.out.println(getIdentitySafely() + " медленно разлагается.");
             }
 
             @Override
             public void lieStill() {
-                System.out.println(getIdentity() + " лежит неподвижно на берегу.");
+                if (getIdentitySafely() == "Идентификация невозможна") {
+                    System.out.println(getIdentitySafely() + ", так как труп разложился");
+                }
+                else {
+                    System.out.println("На нем были короткие холщевые штаны, синяя холщевая рубаха и матросская куртка. Ни по каким признакам нельзя было определить его национальность; " +
+                            "в карманах у него не оказалось ничего, кроме двух золотых монет и трубки. И, разумеется, последней находке я обрадовался гораздо больше, чем первой.");
+                }
+
+            }
+
+            private String getIdentitySafely() {
+                try {
+                    return getIdentity();
+                } catch (CorpseDecayedException e) {
+                    System.err.println(e.getMessage());
+                    return "Идентификация невозможна";
+                }
             }
         };
+
+        // Симулируем разложение
+        for (int i = 0; i < 5; i++) {
+            oldCorpse.increaseDecay();
+            oldCorpse.decay();
+        }
+
+
 
         // Начало истории
         System.out.println("Однажды " + mainHero.getName() + " отправился на задание, чтобы спасти жителей деревни, таких как "
@@ -66,9 +91,6 @@ public class Main {
                 "нашел на берегу против того места, где разбился корабль, труп утонувшего юнги.");
 
         oldCorpse.lieStill();
-
-        System.out.println("На нем были короткие холщевые штаны, синяя холщевая рубаха и матросская куртка. Ни по каким признакам нельзя было определить его национальность; " +
-                "в карманах у него не оказалось ничего, кроме двух золотых монет и трубки. И, разумеется, последней находке я обрадовался гораздо больше, чем первой.");
 
         System.out.println("После бури наступил полный штиль, и мне очень хотелось попробовать добраться в лодке до корабля. " +
                 "Я был уверен, что найду там много такого, что может мне пригодиться. Но собственно не это прельщало меня, а надежда, что " +

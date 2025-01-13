@@ -1,7 +1,7 @@
 package location.island.village;
 
 import location.enumeration.LocationEnum;
-import location.island.abstraction.Village;
+import location.islandAbstract.Village;
 
 public class AborigenVillage extends Village {
     public AborigenVillage(String placeName, LocationEnum world, String legendaryLevel, int population, String primaryIndustry) {
