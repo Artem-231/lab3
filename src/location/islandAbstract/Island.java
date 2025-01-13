@@ -67,4 +67,34 @@ public abstract class Island implements Location {
 
     @Override
     public abstract void exist();
+
+    @Override
+    public String toString() {
+        return "Island{" +
+                "placeName='" + placeName + '\'' +
+                ", world=" + world +
+                ", legendaryLevel='" + legendaryLevel + '\'' +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int result = placeName != null ? placeName.hashCode() : 0;
+        result = 31 * result + (world != null ? world.hashCode() : 0);
+        result = 31 * result + (legendaryLevel != null ? legendaryLevel.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Island island = (Island) obj;
+
+        if (placeName != null ? !placeName.equals(island.placeName) : island.placeName != null) return false;
+        if (world != null ? !world.equals(island.world) : island.world != null) return false;
+        return legendaryLevel != null ? legendaryLevel.equals(island.legendaryLevel) : island.legendaryLevel == null;
+    }
+
 }

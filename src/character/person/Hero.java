@@ -2,6 +2,8 @@ package character.person;
 
 import character.Character;
 
+import java.util.Objects;
+
 public abstract class Hero implements Character {
     private String name;
     private int level;
@@ -35,4 +37,26 @@ public abstract class Hero implements Character {
 
     @Override
     public abstract void move();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hero hero = (Hero) o;
+        return level == hero.level && Objects.equals(name, hero.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, level);
+    }
+
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "name='" + name + '\'' +
+                ", level=" + level +
+                '}';
+    }
+
 }

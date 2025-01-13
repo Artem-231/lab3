@@ -41,6 +41,8 @@ public class Main {
 
         // Труп
         Corpse oldCorpse = new Corpse("Неизвестный Моряк", "Утонул во время кораблекрушения") {
+            boolean b = false;
+
             @Override
             public void decay() {
                 System.out.println(getIdentitySafely() + " медленно разлагается.");
@@ -48,8 +50,8 @@ public class Main {
 
             @Override
             public void lieStill() {
-                if (getIdentitySafely() == "Идентификация невозможна") {
-                    System.out.println(getIdentitySafely() + ", так как труп разложился");
+                if (b == true) {
+                    System.out.println(getIdentitySafely() + " разложился.");
                 }
                 else {
                     System.out.println("На нем были короткие холщевые штаны, синяя холщевая рубаха и матросская куртка. Ни по каким признакам нельзя было определить его национальность; " +
@@ -62,13 +64,14 @@ public class Main {
                 try {
                     return getIdentity();
                 } catch (CorpseDecayedException e) {
+                    b = true;
                     System.err.println(e.getMessage());
-                    return "Идентификация невозможна";
+                    return "Труп";
                 }
             }
         };
 
-        // Симулируем разложение
+        //; Симулируем разложение
         for (int i = 0; i < 5; i++) {
             oldCorpse.increaseDecay();
             oldCorpse.decay();

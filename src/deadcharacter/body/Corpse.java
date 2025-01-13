@@ -1,6 +1,5 @@
 package deadcharacter.body;
 
-import deadcharacter.DeadCharacter;
 import exceptions.CorpseDecayedException;
 
 public abstract class Corpse {
@@ -36,4 +35,34 @@ public abstract class Corpse {
     public abstract void decay();
 
     public abstract void lieStill();
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Corpse corpse = (Corpse) obj;
+
+        if (decayLevel != corpse.decayLevel) return false;
+        if (!identity.equals(corpse.identity)) return false;
+        return causeOfDeath.equals(corpse.causeOfDeath);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = identity.hashCode();
+        result = 31 * result + causeOfDeath.hashCode();
+        result = 31 * result + decayLevel;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Corpse{" +
+                "identity='" + identity + '\'' +
+                ", causeOfDeath='" + causeOfDeath + '\'' +
+                ", decayLevel=" + decayLevel +
+                '}';
+    }
+
 }
